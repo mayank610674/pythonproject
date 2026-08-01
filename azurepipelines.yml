@@ -11,21 +11,20 @@ variables:
   REGION: 'Canada Central'
 
 steps:
-- script: |
-    - task: ArchiveFiles@2
-      inputs:
-        rootFolderOrFile: '$(Build.SourcesDirectory)'
-        includeRootFolder: false
-        archiveType: 'zip'
-        archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-        replaceExistingArchive: true
-    displayName: 'Archive files'
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+  displayName: 'Archive files'
 
-    - task: AzureWebApp@1
-      inputs:
-        azureSubscription: 'Azure-DevOps'
-        appType: 'webAppLinux'
-        appName: '$(WEB_APP_NAME)'
-        connectedServiceName: 'myfirstserviceconnection'
-        package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Azure-DevOps'
+    appType: 'webAppLinux'
+    appName: '$(WEB_APP_NAME)'
+    connectedServiceName: 'myfirstserviceconnection'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+  displayName: 'Deploy to Azure Web App'

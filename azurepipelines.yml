@@ -9,4 +9,4 @@ pool:
     - script: |
     docker --version
     echo "Checking Docker version"
-    
+    displayName: 'check Docker version'

@@ -9,6 +9,7 @@ variables:
   WEB_APP_NAME: 'web2903'
   WEBAPP_PLAN: 'ASP-aznew-b4d0'
   REGION: 'Canada Central'
+  azureSubscription: '8403f057-a237-46e1-8ee5-643ca31ee61b'
 
 steps:
 - task: ArchiveFiles@2
@@ -22,7 +23,7 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Azure-DevOps'
+    azureSubscription: '$(azureSubscription)'
     appType: 'webAppLinux'
     appName: '$(WEB_APP_NAME)'
     connectedServiceName: 'myfirstserviceconnection'

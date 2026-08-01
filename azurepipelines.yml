@@ -4,9 +4,9 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-  steps:
-   - scripts:
-    - script: |
+steps:
+- script: |
     docker --version
     echo "Checking Docker version"
-    displayName: 'check Docker version'
+  displayName: 'Check Docker version'
+

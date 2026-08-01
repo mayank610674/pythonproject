@@ -1,0 +1,12 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+  steps:
+   - scripts:
+    - script: |
+    docker --version
+    echo "Checking Docker version"
+    
